@@ -35,6 +35,28 @@ public class Huffman {
 
         System.out.println("Min-Heap inicial construído com sucesso!");
 
-        // Próximo passo será o loop de extração para montar a árvore...
+        // Proximo passo sera o loop de extracao para montar a arvore:
+        /*
+        3.1.3 Passo 3: Construção da Árvore de Huffman
+        Enquanto o Min-Heap tiver mais de um nó, remova os dois de menor frequência,
+        combine-os em um novo nó interno e insira este novo nó de volta no heap.
+        */
+        while(heap.getSize() > 1){
+            // remove os dois de menor frequencia
+            No filho_esq = heap.extractMin();
+            No filho_dir = heap.extractMin();
+
+            // soma as frequencias de cada um
+            int somaFrequencia = filho_esq.frequencia + filho_dir.frequencia;
+
+            // cria um novo No usando o construtor de Nos internos da classe No
+            No pai = new No(somaFrequencia, filho_esq, filho_dir);
+
+            //coloca de volta no heap
+            heap.insert(pai);
+        }
+        // Ao final do loop, sobra apenas um No no heap: a RAIZ da arvore
+        No raiz = heap.extractMin();
+        System.out.println("Arvore de Huffman PRONTA! Raiz tem frequencia: " + raiz.frequencia);
     }
 }

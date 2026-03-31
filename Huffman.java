@@ -65,4 +65,5 @@ public class Huffman {
         // Teste de saida
         gerador.imprimirTabela();
     }
+
 }

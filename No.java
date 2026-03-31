@@ -23,6 +23,10 @@ public class No implements Comparable<No> {
         this.direita = direita;
     }
 
+    boolean eFolha() {
+        return esquerda == null && direita == null;
+    }
+
     @Override
     public int compareTo(No outroNo) {
         return this.frequencia - outroNo.frequencia;

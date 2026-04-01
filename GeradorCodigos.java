@@ -8,21 +8,21 @@ public class GeradorCodigos {
     }
 
     private void caminhar(No atual, String codigoAcumulado, String[] tabela) {
-        // 1. Segurança: se o nó for nulo, apenas retorna para evitar erros
+        // se o nó for nulo, apenas retorna para evitar erros
         if (atual == null) return;
 
-        // 2. Caso Base: Se o nó for uma folha, decodificamos um caractere!
+        // Caso Base: Se o nó for uma folha, decodifica um caractere
         if (atual.esquerda == null && atual.direita == null) {
-            // Guardamos o código acumulado no índice correspondente ao caractere
-            tabela[atual.caractere] = codigoAcumulado;
+            tabela[atual.caractere] =
+                    (codigoAcumulado.length() > 0) ? codigoAcumulado : "0";
             return;
         }
-        // 3. Caso Recursivo: Continuamos o "percurso guiado"
+        // Caso Recursivo: Continua o "percurso guiado"
 
-        // Se descermos para o filho da esquerda, adicionamos '0' ao código
+        // Se descer para o filho da esquerda, adiciona '0' ao código
         caminhar(atual.esquerda, codigoAcumulado + "0", tabela);
 
-        // Se descermos para a direita, adicionamos '1' ao código
+        // Se descer para a direita, adiciona '1' ao código
         caminhar(atual.direita, codigoAcumulado + "1", tabela);
     }
 }
